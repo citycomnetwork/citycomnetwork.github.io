@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CiTYCOM Network - Glass Morphism</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS for 3D Glass Morphism Design */
+        :root {
+            --primary: #E50914;
+            --dark: #0f0f1a;
+            --darker: #0a0a12;
+            --medium: #1a1a2e;
+            --light: #ffffff;
+            --gray: #a3a3a3;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-stack);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, #16213e 100%);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(229, 9, 20, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(26, 26, 46, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 20%);
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header Styles - Glass Morphism */
+        header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 40px;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+        }
+        
+        /* SCROLLED HEADER EFFECT */
+        header.scrolled {
+            background: rgba(15, 15, 26, 0.85);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+            background: var(--glass-bg);
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+        }
+        
+        .user-profile {
+            font-size: 1.5rem;
+            color: var(--light);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .user-profile:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            padding-top: 20px;
+        }
+        
+        /* Hero Section - Glass Morphism */
+        .hero-section {
+            background: 
+                linear-gradient(rgba(15, 15, 26, 0.7), rgba(15, 15, 26, 0.9)), 
+                url('https://picsum.photos/1600/600') center/cover no-repeat;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--light);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, var(--light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+        
+        .hero-buttons button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .hero-buttons button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), #ff6b6b);
+            z-index: -1;
+            transition: var(--transition);
+            opacity: 0;
+        }
+        
+        .hero-buttons .play-btn {
+            background: var(--light);
+            color: var(--dark);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-buttons .play-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-buttons .play-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .hero-buttons .info-btn {
+            background: var(--glass-bg);
+            color: var(--light);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .hero-buttons .info-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Content Rows (FTP Links as Categories) */
+        .content-row {
+            margin-bottom: 40px;
+        }
+
+        .content-row h3 {
+            font-size: 1.5rem;
+            margin-left: 40px;
+            margin-bottom: 15px;
+            color: var(--light);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Glass Morphism Horizontal Scroll Container */
+        .card-slider {
+            display: flex;
+            overflow-x: scroll;
+            padding: 15px 40px;
+            gap: 20px;
+            scroll-behavior: smooth;
+        }
+        
+        /* Hide scrollbar but keep functionality */
+        .card-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .card-slider {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* 3D Glass Morphism Cards */
+        .card {
+            min-width: 250px;
+            height: 160px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .card a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: var(--light);
+            height: 100%;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+            transition: var(--transition);
+        }
+        
+        .card:hover i {
+            transform: scale(1.2);
+            color: #ff6b6b;
+        }
+        
+        .card p {
+            font-size: 1rem;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            padding: 40px 40px 60px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        /* Utility Classes */
+        .hidden-mobile {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .hidden-mobile {
+                display: initial;
+            }
+        }
+
+        /* Floating elements for 3D effect */
+        .floating-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            animation: float 15s infinite linear;
+            opacity: 0.3;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+        
+        .floating-element:nth-child(3) {
+            top: 80%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            33% {
+                transform: translate(30px, -50px) rotate(120deg);
+            }
+            66% {
+                transform: translate(-20px, 20px) rotate(240deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>CiTYCOM</h1>
+            </div>
+            <nav class="hidden-mobile">
+                <ul>
+                    <li><a href="http://11.11.11.11"><i class="fas fa-home"></i> HOME </a></li>                      
+                    <li><a href="https://www.facebook.com/CitycomNetwork/"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="http://11.11.11.11/CiTYCOM.apk"><i class="fa-brands fa-android"></i> CiTYCOM APPS</a></li>
+                    <li><a href="http://11.11.11.11/CiTYCLOUD.apk"><i class="fa-brands fa-android"></i> CiTCLOUD APPS</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h2>FTP Links Collection</h2>
+                <p>Stream high-quality content and access BDiX FTP resources instantly!</p>
+                <div class="hero-buttons">
+                    <!-- Buttons can be added here if needed -->
+                </div>
+            </div>
+        </div>
+        
+        <section class="content-row">
+            <h3>Cloud & Public Movie Links</h3>
+            <div class="card-slider">
+                <div class="card focusable" tabindex="0"><a href="http://citycloudbd.live"><i class="fas fa-cloud"></i> <p>CiTY CLOUD BD</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://ftpbd.net"><i class="fas fa-server"></i> <p>FTP BD</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://103.58.73.8"><i class="fas fa-folder"></i> <p>FTPBD_File</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://172.16.50.4"><i class="fas fa-server"></i> <p>SAM Online</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://172.16.50.7"><i class="fas fa-server"></i> <p>Dhaka FLIX</p></a></div>
+            </div>
+        </section>
+        
+        <section class="content-row">
+            <h3>Discovery & ICC Network</h3>
+            <div class="card-slider">  
+                <div class="card focusable" tabindex="0"><a href="http://10.16.100.244"><i class="fas fa-server"></i> <p>ICC</p></a></div>             
+                <div class="card focusable" tabindex="0"><a href="https://dflix.discoveryftp.net/m"><i class="fas fa-server"></i> <p>Dflix</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="https://cds1.discoveryftp.net"><i class="fas fa-folder"></i> <p>Dflix File 1</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="https://cds2.discoveryftp.net"><i class="fas fa-folder"></i> <p>Dflix File 2</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="https://cds3.discoveryftp.net"><i class="fas fa-folder"></i> <p>Dflix File 3</p></a></div>
+            </div>
+        </section>
+
+        <section class="content-row">
+            <h3>Circle & TimePass BDIX Servers</h3>
+            <div class="card-slider">
+                <div class="card focusable" tabindex="0"><a href="http://circleftp.net"><i class="fas fa-server"></i> <p>Circle FTP (Primary)</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://new.circleftp.net"><i class="fas fa-server"></i> <p>Circle FTP (New)</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://ftp4.circleftp.net"><i class="fas fa-server"></i> <p>Circle FTP (4)</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://30.30.30.150"><i class="fas fa-server"></i> <p>TimePass BD Live</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://30.30.30.130"><i class="fas fa-folder"></i> <p>TimePass BD</p></a></div>
+            </div>
+        </section>
+
+        <section class="content-row">
+            <h3>Popular BDIX Servers</h3>
+            <div class="card-slider">
+                <div class="card focusable" tabindex="0"><a href="http://fmftp.net"><i class="fas fa-server"></i> <p>FM FTP</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://10.10.10.3"><i class="fas fa-server"></i> <p>FNF</p></a></div>                
+                <div class="card focusable" tabindex="0"><a href="http://172.27.27.84"><i class="fas fa-server"></i> <p>WOW FTP</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://103.77.252.113"><i class="fas fa-server"></i> <p>ShowTime</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://discoveryftp.net"><i class="fas fa-server"></i> <p>Discovery</p></a></div>
+            </div>
+        </section>
+
+        <section class="content-row">
+            <h3>Popular BDIX TV Servers</h3>
+            <div class="card-slider">
+                <div class="card focusable" tabindex="0"><a href="http://www.titu.50webs.com/Bangla.html"><i class="fas fa-server"></i> <p>BDiX TV</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://www.titu.50webs.com/India.html"><i class="fas fa-server"></i> <p>BDiX TV</p></a></div> 
+                <div class="card focusable" tabindex="0"><a href="https://mybdix.com/"><i class="fas fa-server"></i> <p>My BDiX</p></a></div>   
+                <div class="card focusable" tabindex="0"><a href="http://192.168.91.8"><i class="fas fa-tv"></i> <p>Sports Live</p></a></div>
+                <div class="card focusable" tabindex="0"><a href="http://192.19.178.178/tv/"><i class="fas fa-tv"></i> <p>TV Streaming</p></a></div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>CiTYCOM Network | 26 North Mugda Para</p>
+            <p>&copy; 2025 CiTYCOM. All rights reserved | Providing reliable network solutions since establishment</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Add subtle 3D tilt effect to cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const cardRect = card.getBoundingClientRect();
+                const x = e.clientX - cardRect.left;
+                const y = e.clientY - cardRect.top;
+                
+                const centerX = cardRect.width / 2;
+                const centerY = cardRect.height / 2;
+                
+                const angleY = (x - centerX) / 20;
+                const angleX = (centerY - y) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateZ(10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+    </script>
+</body>
+</html>
